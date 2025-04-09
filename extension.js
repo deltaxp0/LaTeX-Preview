@@ -18,11 +18,9 @@ function activate(context) {
         );
 
         panel.webview.html = getWebviewContent();
-
-        // Send initial LaTeX content to the webview
+        
         updateWebview(panel, editor.document.getText());
-
-        // Set up a listener for document changes
+        
         const changeDocumentSubscription = vscode.workspace.onDidChangeTextDocument(event => {
             if (event.document === editor.document) {
                 updateWebview(panel, event.document.getText());
